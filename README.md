@@ -33,10 +33,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Dokumentasi Proses Pembuatan Dashboard IPM Provinsi di Indonesia</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Sebuah dokumentasi pembuatan dashboard disertai gambar dan link cara pembuatannya
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
@@ -51,7 +51,12 @@
 
 
 
+
+
 <!-- TABLE OF CONTENTS -->
+# Link dashboard
+Dashboard dapat diakses secara online pada [Dashboard IPM Provinsi di Indonesia](https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12)
+atau dapat diakses dengan link : (https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12)
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -80,159 +85,152 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Proses Pembuatan Dashboard Indeks Pembangunan Manusia di Indonesia
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Tampilan Penuh Dashboard][product-screenshot]]((https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12))
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Tujuan dari pembuatan dashboard ini ada 4, yaitu : 
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+* Pembuatan diagram yang tepat sesuai dengan data yang akan divisualisasikan
+* Penerapan visualisasi data yang interaktif agar pembaca dapat menganalisis data dengan lebih detail
+* Penerapan Pre-Attentive Attribute dan Gestalt Principle pada visualisasi data
+* Pembuatan dashboard  yang dapat membuat pembaca lebih mudah menganalisis dan membandingkan data
+  
+Dalam rangka mencapai tujuan tersebut, diperlukan beberapa langkah dalam pembuatannya. angkah - langkah tersebut diantaranya adalah :
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+<br />
+<br />
 
-Use the `BLANK_README.md` to get started.
+### Pengumpulan data
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+Terdapat beberapa data yang akan divisualisasikan sehingga membutuhkan langkah pengumpulan data. Data - data tersebut adalah :
 
+* [Data runtun waktu IPM tahun 2010 - 2021 tiap Provinsi di Indonesia](https://www.bps.go.id/indicator/26/413/1/-metode-baru-indeks-pembangunan-manusia.html) 
+* [Pengeluaran per Kapita Disesuaikan tiap Provinsi di Indonesia tahun 2019-2021](https://www.bps.go.id/indicator/26/416/1/-metode-baru-pengeluaran-per-kapita-disesuaikan.html)
+* [Harapan Lama Sekolah tiap Provinsi di Indonesia tahun 2019-2021](https://www.bps.go.id/indicator/26/417/1/-metode-baru-harapan-lama-sekolah.html)
+* [Umur Harapan Hidup tahun tiap Provinsi di Indonesia tahun 2010 - 2021](https://www.bps.go.id/indicator/26/414/1/-metode-baru-umur-harapan-hidup-saat-lahir-uhh-.html)
+* [Data geospasial provinsi di Indonesia](https://gadm.org/download_country_v3.html) 
 
+Data data diatas diperoleh dari web [Badan Pusat Statistik](https://bps.go.id) kecuali data geospasial di Indonesia
 
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
+<br />
+<br />
 
 <!-- GETTING STARTED -->
-## Getting Started
+### Preprocessing Data
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Dalam pembuatan line chart pada [Tableau](https://tableau.com) data haruslah berupa runtun waktu / time series, sedangkan data IPM pada web [Badan Pusat Statistik](https://bps.go.id) setiap kolom merupakan IPM dengan tahun yang berbeda. Sehingga diperlukan penyatuan data-data dalam beberapa kolom tersebut menjadi 1 kolom dan memberi tambahan kolom yang memuat tahun dari setiap baris data. 
 
-### Prerequisites
+Selain itu, pada pembuatan radar chart, karena data yang dimiliki yaitu data HLS 2019-2021, UHH 2019-2021, Pengeluaran per kapita (yang disesuakan) memiliki range data yang berbeda. UHH memiliki range puluhan-ratusan yang dapat mencapai 50 lebih, HLS memiliki skala belasan, sedangkan pengeluaran perkapita (yang disesuaikan) memiliki range ratusan ribu sehingga memerlukan preprocessing. Preprocessing yang dipilih adalah min-max preprocesing. Rumus dari [min-max preprocesing](https://androidkt.com/how-to-scale-data-to-range-using-minmax-normalization/) 
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
-### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+data lainnya dapat digunakan secara langsung tanpa menggunakan preprocessing.
+<br />
+<br />
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+
+
+## Pembuatan Diagram 
+
+### Pembuatan Chloropleth Map
+Saya melihat tutorial membuat chloropleth dari Youtube dengan laman [Tutorial Membuat Chloropleth Map](https://www.youtube.com/watch?v=aTJS2qkU748&t=449s). Dalam tutorial tersebut diajari bagaimana membuat chloropleth dari tahap download data geospasial sampai memasukkan data ke peta agar tercipta perbedaan warna pada peta yang menunjukkan tinggi atau rendahnya IPM suatu provinsi. 
+Langkah langkah tersebut diantaranya 
+* memasukkan longitude data pada kolom dan latitude data pada baris.
+* Lalu memasukkan data IPM provinsi pada "color" agar tercipta chloropleth map. 
+* Lalu meletakkan data nama provinsi pada "detail" agar ketika pembaca meng-highlight atau memilih suatu provinsi, muncul nama provinsi tersebut. 
+
+Tampilan chloropleth map ditunjukkan pada gambar dibawah ini 
+
+[![Tampilan Penuh Chloropleth Map][originalmap]]((https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12))
+
+Sedangkan tampilan Chloropleth Map ketika dihiglight/ diselect
+
+[![Tampilan highlight Chloropleth Map][highlightmap]]((https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12))
+
+Selain itu juga terdapat fitur memilih tahun IPM yang akan ditampilkan peta menggunakan calculate field 
+
+masukkan code pada calculate field untuk fitur pilih tahun
+   ```tableau
+   CASE [PilihTahunIPMpeta]
+WHEN "Tahun2019" THEN [IPM_2019]
+WHEN "Tahun2020" THEN [IPM_2020]
+WHEN "Tahun2021" THEN [IPM_2021]
+END
    ```
-3. Install NPM packages
-   ```sh
-   npm install
+[![Pilih tahun peta][yearmap]]((https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12))
+
+### Pembuatan Line Chart
+Pembuatan diagram ini cukup gampang, langkah langkah yang dibutuhkan yaitu : 
+
+* Memasukkan data pada "rows" dengan nilai IPM dengan menggunakan measure "sum"
+* Memasukkan data pada "columns" dengan data tahun
+* Memasukkan detail "color" pada nama provinsi agar tiap provinsi memiliki warna garis yang berbeda
+* Memasukkan detail "Detail" pada nama provinsi agar tiap provinsi yang dipilih memunculkan namanya
+* Memasukkan komponen "Analytics" berupa forecast agar mengetahui ramalan IPM 2  tahun kedepan dengan dasar data yang dimiliki
+  
+  Tampilan dari line chart ditunjukkan pada gambar dibawah
+
+  [![Line chart][linechart]](https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12)
+
+### Pembuatan Animasi Ranking IPM
+Pada dasarnya pembuatan visualisasi data ini terinsipirasi dari pertemuan awal APG yang diputarkan [video Hans Rowling]((https://www.youtube.com/watch?v=hVimVzgtD6w&t=1091s)) di TedEx tentang data yang bergerak (flicker) memudahkan pembaca dalam menganalisis data. 
+
+Pembuatan animasi ini membutuhkan langkah - langkah sebagai berikut : 
+* Memasukkan data pada "rows" dengan olahan kalkulasi yang dinamakan "ranking"
+* Memasukkan data pada "columns" data sum(IPM)
+* Memasukkan data tahun pada fiter dan pages
+* Memasukkan detail "Detail" pada nama provinsi agar tiap provinsi yang dipilih memunculkan namanya
+* Memasukkan detail "Label" pada nama provinsi agar tiap provinsi yang memunculkan namanya 
+  
+  Tampilan dari animasi ranking  IPM ditunjukkan pada gambar dibawah
+    [![Anmiasi ranking IPM][animationrank]](https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12)
+
+    sayangnya, pada public tableau animasi ini ketika dicoba tidak berjalan. Akan tetapi masih tetap bisa digunakan dengan memilih tahun yang ingin dilihat ranking nya.
+
+### Pembuatan Radar Chart
+Pembuatan radar chart ini mengadopsi cara cara pembuatan radar chart yang diajarkan Megha Narang [link video]((https://www.youtube.com/watch?v=r2LI9Vq8F3g&t=950s)). Menurut saya ini pembuatan diagram paling sulit diantara diagram lain yang saya buat. Chart ini berprinsip bahwa semakin menjorok suatu sudut yang mewakili 1 variabel, maka variabel tersebut semakin besar nilainya.
+
+* masukkan code pada calculate field X RADAR yang nanti akan dimasukkan pada komponen kolom
+   ```tableau
+   SIN(RADIANS([INDEX])*[DEGREE]*[RADAR SCORE])
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+* masukkan code pada calculate field Y RADAR yang nanti akan dimasukkan pada komponen baris
+  
+   ```tableau
+   COS(RADIANS([INDEX])*[DEGREE]*[RADAR SCORE])
+   ```
+* Buat CODE index YANG AKAN DIGUNAKAN untuk membuat path radar chart
+   ```tableau
+   INDEX()-1
    ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+Tampilan default radar chart :
 
+[![Tampilan Radar Chart][radarori]](https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12)
 
+Tampilan radar chart ketika ada 1  provinsi di highlight:
+[![Tampilan Radar Chart ketika di highlight][radarhighlight]](https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12)
 
-<!-- USAGE EXAMPLES -->
-## Usage
+### Pembuatan Cluster Scatter Plot
+Diagram ini dapat menjelaskan pengelompokkan data berdasar 2 variabel yang diletakkan pada sumbu X dan Y.
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Pembuatan diagram ini menggunakan calculated field yang dapat memilih variabel apa yang diwakili sumbu X dan variabel apa yang diwakili sumbu Y. Dalam pengklasteran menggunakan komponen analytics "cluster"
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+Tampilan default cluster scatter plot :
+[![Tampilan Cluster Scatter Plot][cluster]](https://public.tableau.com/app/profile/mohamad.choirul.zamzami/viz/DashboardIPMProvinsidiIndonesia/Dashboard12)
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Mohamad Choirul Zamzami  - 221910908@stis.ac.id
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -250,4 +248,13 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/Untitled.png
+[minmax]: images/minmax.png
+[originalmap]: images/originalmap.png
+[highlightmap]: images/highlightmap.png
+[yearmap]: images/yearmap.png
+[linechart]: images/linechart2.png
+[animationrank]: images/animationrank.png
+[radarori]: images/radarori.png
+[radarhighlight]: images/radarhighlight.png
+[cluster]: images/cluster.png
